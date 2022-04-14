@@ -6,14 +6,19 @@ for (let i=0; i < menuLink.length; i++) {
     
     menuLink.item(i).onclick = () => {
         
-        let menuSubItem = menuLink.item(i).parentElement.querySelector('.menu_sub');
+        if (menuLink.item(i).getAttribute('href') == "") {
+            let menuSubItem = menuLink.item(i).parentElement.querySelector('.menu_sub');
         
-        closeMenu();
-        
-        menuSubItem.className = 'menu menu_sub menu_active';
-        
+            if (menuSubItem.className == 'menu menu_sub menu_active') {
+                closeMenu();
+            }
+            else {
+                closeMenu();
+                menuSubItem.className = 'menu menu_sub menu_active';    
+        }
         if (menuSubItem != null) {
             return false;
+            }
         }
     }
 }
