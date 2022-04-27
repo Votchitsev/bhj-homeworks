@@ -1,4 +1,5 @@
 const product = document.querySelectorAll('.product');
+const cartProducts = document.querySelectorAll('.cart__products');
 
 for (i = 0; i < product.length; i++) {
 
@@ -7,6 +8,13 @@ for (i = 0; i < product.length; i++) {
     
     product.item(i).querySelector('.product__controls > .product__quantity > .product__add').addEventListener('click', (e) => {
         const quantity = e.target.parentElement.querySelector('.product__quantity-value').textContent
+        existElement = Array.from(cartProducts[0].querySelectorAll('.cart__product')).find((el) => el.dataset.id == productId);
+        if (existElement) {
+            let currentQuantity = existElement.querySelector('.cart__product-count').textContent
+            let newQuantity = Number(currentQuantity) + Number(quantity);
+            existElement.querySelector('.cart__product-count').textContent = newQuantity;
+            return
+        }
         const cartElement = document.createElement('div');
         cartElement.classList.add('cart__product');
         cartElement.setAttribute('data-id', productId);
@@ -15,7 +23,7 @@ for (i = 0; i < product.length; i++) {
     })
 
     product.item(i).querySelector('.product__quantity-control_dec').addEventListener('click', (e) => {
-        if (e.target.parentElement.querySelector('.product__quantity-value').textContent > 0) {
+        if (e.target.parentElement.querySelector('.product__quantity-value').textContent > 1) {
             e.target.parentElement.querySelector('.product__quantity-value').textContent -= 1;
         }
     })

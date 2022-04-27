@@ -1,21 +1,18 @@
 const taskInput = document.querySelector('#task__input');
+const form = document.forms[0];
 
 
-
-taskInput.addEventListener('keydown', (event) => {
-    if (event.key == 'Enter') {
-        event.preventDefault();
+form.onsubmit = () => {
+    if (taskInput.value.trim().length > 0) {
+        createTask(taskInput.value);
+        taskInput.value = '';
+        return false;
+    } else {
+        return false;
     }
-})
+    
+}
 
-
-window.addEventListener('keyup', (event) => {
-    event.preventDefault();
-    if (event.key == "Enter" && event.target.value) {
-        createTask(event.target.value);
-        event.target.value = '';
-    }
-})
 
 function createTask(taskText) {
     const taskElement = document.createElement('div');
