@@ -3,10 +3,16 @@ const tooltips = document.querySelectorAll('.has-tooltip');
 for (i = 0; i < tooltips.length; i++) {
     tooltips.item(i).onclick = (event) => {
         const tooltipActive = document.querySelector('.tooltip_active');
+        
         if (tooltipActive !== null) {
+           
+            if (event.target.title == tooltipActive.textContent) {
+                tooltipActive.remove();
+                return false;
+            } 
             tooltipActive.remove();
-            return false;
-        }        
+        }
+
         const element = event.target;
         const tooltip = document.createElement('div');
         tooltip.className = "tooltip tooltip_active";

@@ -6,11 +6,8 @@ form.onsubmit = () => {
     if (taskInput.value.trim().length > 0) {
         createTask(taskInput.value);
         taskInput.value = '';
-        return false;
-    } else {
-        return false;
-    }
-    
+    } 
+    return false;
 }
 
 
