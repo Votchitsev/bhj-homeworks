@@ -33,6 +33,5 @@ xhr.onload = function() {
         item.appendChild(itemCurrency)
 
         cardItem.appendChild(item)
-        
     }
 }   
