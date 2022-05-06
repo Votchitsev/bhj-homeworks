@@ -1,7 +1,7 @@
 const cardItem = document.querySelector('#items')
 const loader = document.querySelector('#loader')
 
-let xhr = new XMLHttpRequest()
+const xhr = new XMLHttpRequest()
 
 xhr.open('GET', 'https://netology-slow-rest.herokuapp.com')
 
