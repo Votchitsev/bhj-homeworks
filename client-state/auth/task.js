@@ -9,20 +9,22 @@ const userNumber = document.querySelector('#user_id');
 
 signinBtn.addEventListener('click', async (e) => {
     e.preventDefault();
-    let data = new FormData();
-    data.append('login', login.value);
-    data.append('password', password.value);
+    let data = new FormData(form);
     let response = await fetch('https://netology-slow-rest.herokuapp.com/auth.php', {
         method: 'POST',
         body: data,
     });
+    
     let result = await response.json();
-    if (result.success == true) {
+    
+    if (result.success) {
         localStorage.setItem('id', result.user_id);
         auth(result.user_id);
     } else {
         alert('Invalid username or password!');
     }
+
+    form.reset();
 });
 
 window.onload = () => {
